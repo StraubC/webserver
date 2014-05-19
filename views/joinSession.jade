@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	header#banner
+		h1 Webserver
+		nav 
+			ul
+				li: a(href="/") Home
+				li: a(href="/createSession") Session erstellen
+				li.active: a(href="/joinSession") Session beitreten
+				li: a(href="/howTo") HowTo
+	section#content
+		h2 Session beitreten
+		p Nehmen Sie an einer Session teil.
+		form(action="/joinSession", method="post")
+			p
+				label Name der Session
+				input(type="text", name ="sessionName")
+			p
+				label Passwort 
+				input(type="password", name ="sessionPw")
+			p
+				input(type="submit", value="beitreten")

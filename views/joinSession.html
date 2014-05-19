@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="/stylesheets/style.css">
+		<script src="/javascripts/jquery.js"> </script>
+		<script src="/javascripts/socket.io.js"></script>
+	</head>
+	<body class="center">
+		<header id="banner">
+			<h1>Webserver</h1>
+			<nav> 
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/createSession">Session erstellen</a></li>
+					<li class="active"><a href="/joinSession">Session beitreten</a></li>
+					<li><a href="/howTo">HowTo</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section id="content">
+		  <h2>Session beitreten</h2>
+		  <p>Nehmen Sie an einer Session teil.</p>
+		  <form action="/joinSession" method="post">
+		    <p>
+		      <label>Name der Session</label>
+		      <input type="text" name="sessionName"/>
+		    </p>
+		    <p>
+		      <label>Passwort </label>
+		      <input type="password" name="sessionPw"/>
+		    </p>
+		    <p>
+		      <input type="submit" value="beitreten"/>
+		    </p>
+		  </form>
+		</section>
+	</body>
+</html>

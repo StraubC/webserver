@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	header#banner
+		h1 Poker
+		nav 
+			ul
+				li: a(href="/") Home
+				li: a(href="/createGame") Spiel erstellen
+				li: a(href="/joinGame") Spiel beitreten
+				li.active: a(href="/howTo") HowTo
+	section#content
+		script(src='/javascripts/chat.js')
+		p 
+			ul#incomingChatMessages
+		p 
+			input(type="text", id="outgoingChatMessage")

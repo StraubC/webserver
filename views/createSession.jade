@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	header#banner
+		h1 Webserver
+		nav 
+			ul
+				li: a(href="/") Home
+				li.active: a(href="/createSession") Session erstellen
+				li: a(href="/joinSession") Session beitreten
+				li: a(href="/howTo") HowTo
+	section#content
+		h2 Session erstellen
+		p Erstellen Sie eine neue Session, indem Sie ihr einen Namen geben und durch ein Passwort sichern.
+		
+		form(action="/sessionSetup", method="post")
+			p
+				label Name der Session
+				input(type="text", name ="sessionName")
+			p
+				label Passwort 
+				input(type="password", name ="sessionPw")
+			p
+				input(type="submit", value="Erstellen")
