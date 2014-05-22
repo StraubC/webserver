@@ -1,20 +1,31 @@
-
+/*
+ * Variablen Requires
+ */
+var http = require('http'); 
 var express = require('express');
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongo = require('mongodb');
 var monk = require('monk');
+
+
+/*
+ * Variablen Datenbank und Routing
+ */
 var db = monk('localhost:27017/webserver')
-
 var routes = require('./routes/index');
+var session = require('./routes/session');
 
-
+/*
+ * Instanziieren und konfigurieren von Express
+ */
 var app = express();
-// var io = require('socket.io').listen(server);
+var server = http.createServer(app);
+var socketio = require('socket.io').listen(server);
+server.listen(3001);
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -27,26 +38,28 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Make our db accessible to our router
 app.use(function(req,res,next){
     req.db = db;
     next();
 });
 
 app.use('/', routes);
+app.use('/', session);
 
 
-/// catch 404 and forwarding to error handler
+/*
+ * Error Handler
+ */
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-/// error handlers
-
-// development error handler
-// will print stacktrace
+/*
+ * Error Handler Development
+ * Ausgabe inkl. stacktrace
+ */
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -57,8 +70,10 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
+/*
+ * Error Handler Einsatz
+ * keine stacktrace Ausgabe
+ */
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -93,26 +108,24 @@ module.exports = app;
 //     });
 //   });
 
-/*io.sockets.on('connection', function (socket) {
+socketio.sockets.on('connection', function (socket) {
     socket.on('room', function (data) {
         console.log('Room: ', data.room);
         socket.join(data.room);
     });
 
     socket.on('msg', function (data) {
-      io.sockets.in(data.room).emit('message', data.msg);
+      socketio.sockets.in(data.room).emit('message', data.msg);
       console.log(data.room + data.msg);
     });
-});*/
+});
 
-/*io.sockets.on('connection', function (socket) {
+socketio.sockets.on('connection', function (socket) {
     socket.on('message', function (msg) {
         console.log('Message Received: ', msg);
-        io.sockets.emit('message', msg);
+        socketio.sockets.emit('message', msg);
     });
-
-    
-});*/
+});
 
 // app.get('/', routes.index);
 // app.get('/createGame', routes.createGame);
