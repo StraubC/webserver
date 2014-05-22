@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title></title>
-		<link rel="stylesheet" href="/stylesheets/style.css">
-		<script src="/javascripts/jquery.js"> </script>
-		<script src="/javascripts/socket.io.js"></script>
-	</head>
-	<body class="center">
-		<header id="banner">
-			<h1>Webserver</h1>
-			<nav> 
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li class="active"><a href="/login">Login</a></li>
-					<li><a href="/createSession">Session erstellen</a></li>
-					<li><a href="/joinSession">Session beitreten</a></li>
-					<li><a href="/chat">Chat</a></li>
-				</ul>
-			</nav>
-		</header>
-		<section id="content">
-		  <h2>Login</h2>
-		  <p>Loggen Sie sich mit einem bestehnden Account ein:</p>
-		  <form action="/login" method="post">
-		    <p>
-		      <label>Benutzername</label>
-		      <input type="text" name="loginName"/>
-		    </p>
-		    <p>
-		      <label>Passwort </label>
-		      <input type="password" name="loginPw"/>
-		    </p>
-		    <p>
-		      <input type="submit" value="einloggen"/>
-		    </p>
-		  </form>
-		  <br>
-		  <p>Account anlegen:</p>
-		  <form action="/loginCreate" method="post">
-		    <p>
-		      <label>Benutzername</label>
-		      <input type="text" name="userName"/>
-		    </p>
-		    <p>
-		      <label>Passwort </label>
-		      <input type="password" name="userPw"/>
-		    </p>
-		    <p>
-		      <input type="submit" value="anlegen"/>
-		    </p>
-		  </form>
-		</section>
-	</body>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script src="/javascripts/jquery.js"> </script>
+	<script src="/javascripts/socket.io.js"></script>
+	<script src="/javascripts/login.js"></script>
+</head>
+<body class="center">
+	<header id="banner">
+		<h1>Webserver</h1>
+		<nav> 
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li class="active"><a href="/login">Login</a></li>
+				<li><a href="/createSession">Session erstellen</a></li>
+				<li><a href="/joinSession">Session beitreten</a></li>
+				<li><a href="/chat">Chat</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section id="content">
+				
+		<div id="loginSection">
+			<p>Loggen Sie sich mit einem bestehnden Account ein:</p>
+			<form action="/login" method="post">
+				<p>
+					<label>Benutzername</label>
+					<input type="text" name="loginName"/>
+				</p>
+				<p>
+					<label>Passwort </label>
+					<input type="password" name="loginPw"/>
+				</p>
+				<p>
+					<input type="submit" value="einloggen"/>
+				</p>
+			</form>
+			
+		</div>
+		
+		<div id="createSection" style="display:none;">
+			<p>Account anlegen:</p>
+			<form action="/loginCreate" method="post">
+				<p>
+					<label>Benutzername</label>
+					<input type="text" name="userName"/>
+				</p>
+				<p>
+					<label>Passwort </label>
+					<input type="password" name="userPw"/>
+				</p>
+				<p>
+					<input type="submit" value="anlegen"/>
+				</p>
+			</form>
+			
+		</div>
+
+		<div id="switchButton">zur Anmeldung </div>
+	</section>
+</body>
 </html>
