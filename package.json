@@ -16,5 +16,6 @@
 	  "mongodb": "*",
 	  "monk": "*",
 	  "ejs": "*"
-  }
+  },
+  "main": "./bin/www"
 }
