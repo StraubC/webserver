@@ -17,5 +17,5 @@
 	  "monk": "*",
 	  "ejs": "*"
   },
-  "main": "./bin/www"
+  "main": "app.js"
 }
