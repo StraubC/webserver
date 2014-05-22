@@ -14,8 +14,15 @@ var monk = require('monk');
 
 /*
  * Variablen Datenbank und Routing
+ * Wenn Ausführung in der Openshift Umgebung deren db Zugang benutzen, sonst lokal
  */
-var db = monk('localhost:27017/webserver')
+
+var dbConnectString ='localhost:27017/webserver';
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+  dbConnectString = process.env.OPENSHIFT_MONGODB_DB_URL + 'webserver';
+}
+var db = monk(dbConnectString);
+
 var routes = require('./routes/index');
 var session = require('./routes/session');
 
