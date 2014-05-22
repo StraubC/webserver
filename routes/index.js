@@ -6,10 +6,18 @@ var express = require('express');
 var router = express.Router();
 
 /*
- * GET indes page.
+ * GET index page.
  */
 
 router.get('/', function(req, res){
+  res.render('index.html', { title: 'Home' });
+});
+
+router.get('/home', function(req, res){
+  res.render('index.html', { title: 'Home' });
+});
+
+router.get('/index', function(req, res){
   res.render('index.html', { title: 'Home' });
 });
 
@@ -52,6 +60,14 @@ router.get('/sessionMaster', function(req, res){
 
 router.get('/sessionClient', function(req, res){
   res.render('sessionClient.html', { title: 'Client' });
+});
+
+/*
+ * GET Login page.
+ */
+
+router.get('/login', function(req, res){
+  res.render('login.html');
 });
 
 module.exports = router;
