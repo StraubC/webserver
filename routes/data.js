@@ -64,7 +64,7 @@ router.get('/data/:id', function(req, res){
  * Select Where name
  */
 
-router.get('/data/:name', function(req, res){
+router.get('/data/byName/:name', function(req, res){
   var db = req.db;
   var collection = db.get('datacollection');
   var findName = req.params.name.replace(/:/g,"").replace(/\s/g,"");

@@ -29,20 +29,23 @@
 		</div>
 		<div id="searchBox" style="display:none;">
 
-			<form action="/data" method="post">
+			<form id="searchForm" action="#">
 				<p>
 					<label>Name des gesuchten Eintrags</label>
-					<input type="text" name="searchName"/>
+					<input type="text" id="searchName"/>
 				</p>
 				
 				<p>
 					<input type="submit" value="suchen"/>
 				</p>
-			</form>	
+			</form>
+			<div id="searchResultBox">
+				
+			</div>	
 		</div>
 
 		<div id= "insertBox" style="display:none;">
-		
+
 			<form action="/data" method="post">
 				<p>
 					<label>Name</label>

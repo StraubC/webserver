@@ -23,6 +23,27 @@ $(document).ready(function(){
 	    $("#searchBox").hide(500);
 	    $("#insertBox").show(500);
 	});
+
+	$("#searchForm").submit(function( event ) {
+		var searchName = $('#searchName').val();
+		//var searchName = 'dfg';
+		var getString = '/data/byName/'+ searchName;
+		var searchResult ='';
+
+		$.getJSON(getString, function(data){
+			searchResult += '<table class="centerTable"><th>Name</th><th>Wert 1</th>';
+			$.each(data, function(){
+				searchResult += '<tr>';
+				searchResult += '<td>' + this.name + '</td>';
+				searchResult += '<td>' + this.value1 + '</td>';
+				searchResult += '</tr>';	
+			});
+			searchResult += '</table>';
+			$('#searchResultBox').html(searchResult);
+		
+		});
+		event.preventDefault();	
+	});
 });
 
 function showAllFunc(){
