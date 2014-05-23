@@ -22,6 +22,14 @@ router.get('/index', function(req, res){
 });
 
 /*
+ * GET data page.
+ */
+
+router.get('/dataPage', function(req, res){
+  res.render('data.html', { title: 'Data' });
+});
+
+/*
  * GET create Session page.
  */
 

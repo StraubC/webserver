@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script src="/javascripts/jquery.js"> </script>
+	<script src="/javascripts/data.js"> </script>
+</head>
+<body class="center">
+	<header id="banner">
+		<h1>Webserver</h1>
+		<nav> 
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li class="active"><a href="/dataPage">Data</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/createSession">Session erstellen</a></li>
+				<li><a href="/joinSession">Session beitreten</a></li>
+				<li><a href="/chat">Chat</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section id="content">
+				
+		<h2><%= title%></h2>
+		<div class="Button" id="showAll">Alle Daten</div><div class="Button" id="search">Daten suchen</div><div class="Button" id="insert">Daten eintragen</div>
+		<div id="showAllBox">
+			
+		</div>
+		<div id="searchBox" style="display:none;">
+
+			<form action="/data" method="post">
+				<p>
+					<label>Name des gesuchten Eintrags</label>
+					<input type="text" name="searchName"/>
+				</p>
+				
+				<p>
+					<input type="submit" value="suchen"/>
+				</p>
+			</form>	
+		</div>
+
+		<div id= "insertBox" style="display:none;">
+		
+			<form action="/data" method="post">
+				<p>
+					<label>Name</label>
+					<input type="text" name="dataName"/>
+				</p>
+				<p>
+					<label>Wert 1 </label>
+					<input type="text" name="dataVal1"/>
+				</p>
+				<p>
+					<input type="submit" value="Eintragen"/>
+				</p>
+			</form>
+			
+		</div>
+
+	</section>
+</body>
+</html>

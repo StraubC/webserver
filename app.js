@@ -26,6 +26,7 @@ var db = monk(dbConnectString);
 var routes = require('./routes/index');
 var session = require('./routes/session');
 var login = require('./routes/login');
+var data = require('./routes/data');
 
 /*
  * Instanziieren und konfigurieren von Express
@@ -54,7 +55,7 @@ app.use(function(req,res,next){
 app.use('/', routes);
 app.use('/', session);
 app.use('/', login);
-
+app.use('/', data);
 
 /*
  * Error Handler
