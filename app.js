@@ -17,10 +17,10 @@ var monk = require('monk');
  * Wenn Ausführung in der Openshift Umgebung deren db Zugang benutzen, sonst lokal
  */
 
-var dbConnectString ='localhost:27017/webserver';
-if(process.env.OPENSHIFT_MONGODB_DB_URL){
-  dbConnectString = process.env.OPENSHIFT_MONGODB_DB_URL + 'webserver';
-}
+var dbConnectString = 'mongodb://testUser:test@ds053128.mongolab.com:53128/webserver' || 'localhost:27017/webserver';
+// if(process.env.OPENSHIFT_MONGODB_DB_URL){
+//   dbConnectString = process.env.OPENSHIFT_MONGODB_DB_URL + 'webserver';
+// }
 var db = monk(dbConnectString);
 
 var routes = require('./routes/index');
