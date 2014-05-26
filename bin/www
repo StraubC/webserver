@@ -1,10 +1,32 @@
 #!/usr/bin/env node
 var debug = require('debug')('my-application');
 var app = require('../app');
+var socketio = require('socket.io');
 
 app.set('port', process.env.PORT || 3000);
 //app.set('ip', process.env.IP || '127.0.0.1');
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
+});
+
+var io = socketio.listen(server);
+
+io.sockets.on('connection', function (socket) {
+    socket.on('room', function (data) {
+        console.log('Room: ', data.room);
+        socket.join(data.room);
+    });
+
+    socket.on('msg', function (data) {
+      socketio.sockets.in(data.room).emit('message', data.msg);
+      console.log(data.room + data.msg);
+    });
+});
+
+io.sockets.on('connection', function (socket) {
+    socket.on('message', function (msg) {
+        console.log('Message Received: ', msg);
+        socketio.sockets.emit('message', msg);
+    });
 });

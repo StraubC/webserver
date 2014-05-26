@@ -1,4 +1,4 @@
-var iosocket = io.connect('http://192.168.220.102:3001');
+var iosocket = io.connect(window.location.hostname);
  
 iosocket.on('connect', function () {
     $('#incomingChatMessages').append($('<li>Connected</li>'));

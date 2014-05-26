@@ -12,6 +12,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 
 
+
 /*
  * Variablen Datenbank und Routing
  * Verbindnen mit mongolab DB, falls nicht möglich lokalen fallback benutzen
@@ -33,9 +34,9 @@ var data = require('./routes/data');
  * Instanziieren und konfigurieren von Express
  */
 var app = express();
-var server = http.createServer(app);
-var socketio = require('socket.io').listen(server);
-server.listen(3001);
+//var server = http.createServer(app);
+//var io = socketio.listen(server);
+// server.listen(3001);
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -119,22 +120,5 @@ module.exports = app;
 //     });
 //   });
 
-socketio.sockets.on('connection', function (socket) {
-    socket.on('room', function (data) {
-        console.log('Room: ', data.room);
-        socket.join(data.room);
-    });
 
-    socket.on('msg', function (data) {
-      socketio.sockets.in(data.room).emit('message', data.msg);
-      console.log(data.room + data.msg);
-    });
-});
-
-socketio.sockets.on('connection', function (socket) {
-    socket.on('message', function (msg) {
-        console.log('Message Received: ', msg);
-        socketio.sockets.emit('message', msg);
-    });
-});
 
