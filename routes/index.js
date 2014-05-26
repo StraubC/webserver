@@ -29,6 +29,15 @@ router.get('/dataPage', function(req, res){
   res.render('data.html', { title: 'Data' });
 });
 
+
+/*
+ * GET Session Page
+ */
+
+router.get('/session', function(req, res){
+  res.render('session.html', { title: 'Session' });
+});
+
 /*
  * GET create Session page.
  */

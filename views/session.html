@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<script src="/javascripts/jquery.js"> </script>
+	<script src="/javascripts/socket.io.js"></script>
+	<script src="/javascripts/session.js"> </script>
+</head>
+<body class="center">
+	<header id="banner">
+		<h1>Webserver</h1>
+		<nav> 
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/dataPage">Data</a></li>
+				<li><a href="/login">Login</a></li>
+				<li class="active"><a href="/session">Sessions</a></li>
+				<li><a href="/chat">Chat</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section id="content">
+		<div class="Button" id="create">Session anlegen</div><div class="Button" id="join">Session beitreten</div>
+		<div id="createBox">
+			<h2>Session erstellen</h2>
+			<p>Erstellen Sie eine neue Session, indem Sie ihr einen Namen geben und durch ein Passwort sichern.</p>
+			<form action="/sessionSetup" method="post">
+				<p>
+					<label>Name der Session</label>
+					<input type="text" name="sessionName"/>
+				</p>
+				<p>
+					<label>Passwort </label>
+					<input type="password" name="sessionPw"/>
+				</p>
+				<p>
+					<input type="submit" value="Erstellen"/>
+				</p>
+			</form>
+		</div>
+		<div id="joinBox" style="display:none;">
+			<h2>Session beitreten</h2>
+			<p>Nehmen Sie an einer Session teil.</p>
+			<form action="/sessionClient" method="post">
+				<p>
+					<label>Name der Session</label>
+					<input type="text" name="sessionName"/>
+				</p>
+				<p>
+					<label>Passwort </label>
+					<input type="password" name="sessionPw"/>
+				</p>
+				<p>
+					<input type="submit" value="beitreten"/>
+				</p>
+			</form>	
+		</div>
+	</section>
+</body>
+</html>
