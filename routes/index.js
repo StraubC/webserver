@@ -59,7 +59,7 @@ router.get('/chat', function(req, res){
  */
 
 router.get('/sessionMaster', function(req, res){
-  res.render('SessionMaster.html', { title: 'Master' });
+  res.render('sessionMaster.html', { title: 'Master' });
 });
 
 /*
