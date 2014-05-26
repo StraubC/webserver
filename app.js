@@ -1,5 +1,5 @@
 /*
- * Variablen Requires
+ * Variablen / Requires (läd Module)
  */
 var http = require('http'); 
 var express = require('express');
@@ -14,7 +14,8 @@ var monk = require('monk');
 
 /*
  * Variablen Datenbank und Routing
- * Wenn Ausführung in der Openshift Umgebung deren db Zugang benutzen, sonst lokal
+ * Verbindnen mit mongolab DB, falls nicht möglich lokalen fallback benutzen
+ * ToDo: hardcoded Zugangsdaten maskieren
  */
 
 var dbConnectString = 'mongodb://testUser:test@ds053128.mongolab.com:53128/webserver' || 'localhost:27017/webserver';
@@ -136,16 +137,4 @@ socketio.sockets.on('connection', function (socket) {
         socketio.sockets.emit('message', msg);
     });
 });
-
-// app.get('/', routes.index);
-// app.get('/createGame', routes.createGame);
-// app.get('/joinGame', routes.joinGame);
-// app.get('/howTo', routes.howTo);
-// app.get('/gameMaster/:id', routes.gameMaster);
-// app.get('/gameClient/:id', routes.gameClient);
-// app.get('/jsonGame', routes.jsonGame);
-// app.get('/gameByID/:id', routes.gameByID);
-
-// app.post('/gameSetup', routes.gameSetup);
-// app.post('/joinGame', routes.joinGamePost);
 
