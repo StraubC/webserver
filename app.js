@@ -10,8 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var monk = require('monk');
-
-
+var methodOverride = require('method-override');
 
 /*
  * Variablen Datenbank und Routing
@@ -41,7 +40,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 //app.set('view engine', 'jade');
-
+app.use(methodOverride());
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());

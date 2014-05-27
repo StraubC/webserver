@@ -59,6 +59,33 @@
 			</form>
 			
 		</div>
+		<div id= "editBox" style= "display:none;">
+
+			<form id="updateForm" action="/data/:id" method="post">
+				<p>
+					<label>neuer Name:</label>
+					<input type="text" name="updateName"/>
+				</p>
+				<p>
+					<label>neuer Wert:</label>
+					<input type="text" name="updateValue1"/>
+				</p>
+				<p style="display:none">
+					<input type="text" id="updateId"/>
+				</p>
+				
+				<p>
+					<input type="submit" value="update"/>
+				</p>
+			</form>
+			<form id="deleteForm" action="#">
+				<p style="display:none">
+					<input type="text" id="deleteId"/>
+				</p>
+				<input type="submit" value="delete" />
+			</form>
+
+		</div>
 
 	</section>
 </body>

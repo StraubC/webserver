@@ -4,6 +4,7 @@
 
 var express = require('express');
 var router = express.Router();
+var methodOverride = require('method-override');
 
 /*
  * GET Liste aller Einträge
@@ -77,9 +78,41 @@ router.get('/data/byName/:name', function(req, res){
 /*
  * PUT data by id
  * Update Where id
+ * Keine Implementierung des HTTP Verb PUT möglich. Problem mit Post und Übergebener id umgangen. Verstoß gegen REST?
+ * method-override auch keine Hilfe...
  */
 
+router.post('/data/:id', function(req, res){
+  //console.log("In /data/update");
+  var db = req.db;
+  var collection = db.get('datacollection');
+  var id = req.params.id.replace(/:/g,"").replace(/\s/g,"");
+  //var id = parseInt(req.body.updateId);
+  var newName = req.body.updateName;
+  var newVal1 = req.body.updateValue1;
+  //console.log(newName);
+  collection.findAndModify({_id: id}, {$set:{
+        name:  newName,
+        value1: newVal1
+      }
+    }, {multi: false}, function(err, doc){
+      if (err){
+        res.send(err);
+      }
+      res.redirect("../dataPage");
 
+  });
+});
+
+router.delete('/data/:id', function(req, res){
+  var db = req.db;
+  var collection = db.get('datacollection');
+  var id = req.params.id.replace(/:/g,"").replace(/\s/g,"");
+  collection.remove({_id: id}, function(err, doc){
+    res.send("Daten gelöscht");
+  });
+
+});
 
 
 
