@@ -25,7 +25,16 @@ body {
 #content form {clear: both; margin: 10 auto; text-align: center;}
 
 
-
+#login {
+	background-color: #c0c0a7;
+	
+	float: right;
+	padding: 5px 15px 5px 15px;
+	
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
 .Button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;

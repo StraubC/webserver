@@ -10,15 +10,15 @@ var router = express.Router();
  */
 
 router.get('/', function(req, res){
-  res.render('index.html', { title: 'Home' });
+  res.render('index.html', { title: 'Home', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 router.get('/home', function(req, res){
-  res.render('index.html', { title: 'Home' });
+  res.render('index.html', { title: 'Home', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 router.get('/index', function(req, res){
-  res.render('index.html', { title: 'Home' });
+  res.render('index.html', { title: 'Home', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 /*
@@ -26,7 +26,7 @@ router.get('/index', function(req, res){
  */
 
 router.get('/dataPage', function(req, res){
-  res.render('data.html', { title: 'Data' });
+  res.render('data.html', { title: 'Data', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 
@@ -35,7 +35,7 @@ router.get('/dataPage', function(req, res){
  */
 
 router.get('/session', function(req, res){
-  res.render('session.html', { title: 'Session' });
+  res.render('session.html', { title: 'Session', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 /*
@@ -43,7 +43,7 @@ router.get('/session', function(req, res){
  */
 
 router.get('/createSession', function(req, res){
-  res.render('createSession.html', { title: 'Session erstellen' });
+  res.render('createSession.html', { title: 'Session erstellen', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 /*
@@ -51,7 +51,7 @@ router.get('/createSession', function(req, res){
  */
 
 router.get('/joinSession', function(req, res){
-  res.render('joinSession.html', { title: 'Session beitreten' });
+  res.render('joinSession.html', { title: 'Session beitreten', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 
@@ -60,7 +60,7 @@ router.get('/joinSession', function(req, res){
  */
 
 router.get('/chat', function(req, res){
-  res.render('chat.html', { title: 'Chat' });
+  res.render('chat.html', { title: 'Chat', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 /*
@@ -68,7 +68,7 @@ router.get('/chat', function(req, res){
  */
 
 router.get('/sessionMaster', function(req, res){
-  res.render('sessionMaster.html', { title: 'Master' });
+  res.render('sessionMaster.html', { title: 'Master', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 /*
@@ -76,7 +76,7 @@ router.get('/sessionMaster', function(req, res){
  */
 
 router.get('/sessionClient', function(req, res){
-  res.render('sessionClient.html', { title: 'Client' });
+  res.render('sessionClient.html', { title: 'Client', loggedIn: req.session.loggedIn, login: req.session.userName });
 });
 
 /*
@@ -84,7 +84,7 @@ router.get('/sessionClient', function(req, res){
  */
 
 router.get('/login', function(req, res){
-  res.render('login.html');
+  res.render('login.html', { title: 'Login', loggedIn: req.session.loggedIn, login: req.session.userName});
 });
 
 module.exports = router;

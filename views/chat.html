@@ -18,6 +18,16 @@
 					<li class="active"><a href="/chat">Chat</a></li>
 				</ul>
 			</nav>
+			<div id="login">
+			<%
+				if (loggedIn){ %>	
+					Angemeldet als <%= login %>.
+				<%}
+				else{%>
+					Nicht angemeldet.
+				<%}
+			%>
+			</div>
 		</header>
 		<section id="content">
 			<script src="/javascripts/chat.js"></script>

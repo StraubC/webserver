@@ -19,6 +19,16 @@
 				<li><a href="/chat">Chat</a></li>
 			</ul>
 		</nav>
+		<div id="login">
+			<%
+				if (loggedIn){ %>	
+					Angemeldet als <%= login %>.
+				<%}
+				else{%>
+					Nicht angemeldet.
+				<%}
+			%>
+			</div>
 	</header>
 	<section id="content">
 		<div class="Button" id="create">Session anlegen</div><div class="Button" id="join">Session beitreten</div>

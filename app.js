@@ -7,6 +7,7 @@ var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
 var bodyParser = require('body-parser');
 var mongo = require('mongodb');
 var monk = require('monk');
@@ -47,6 +48,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(expressSession({secret:'qwerfdsa'}));
+
+
+// app.use(function(req, res, next){
+//   res.end(JSON.stringify(req.cookies));
+// });
 
 app.use(function(req,res,next){
     req.db = db;

@@ -40,7 +40,9 @@ router.post('/login', function(req, res){
 
   collection.findOne({ name: loginName}, function(err, doc){
     if(loginPw.toString() === doc.pw){
-    	// ToDo: session coockie anlegen.
+      req.session.loggedIn = true;
+      req.session.userName = loginName;
+    	
       // return: Login bestätigt, Weiterleitung auf home Seite
       res.redirect("home");
     }
