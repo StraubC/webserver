@@ -40,6 +40,7 @@ var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
+
 //app.set('view engine', 'jade');
 app.use(methodOverride());
 app.use(favicon());
@@ -67,12 +68,11 @@ app.use('/', login);
 app.use('/', data);
 
 /*
- * Error Handler
+ * Error Handler 404
  */
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.use(function(req, res) {
+  res.status(400);
+  res.render('404.html', {title: '404: File not Found.'});
 });
 
 /*
