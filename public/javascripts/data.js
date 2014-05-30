@@ -60,10 +60,29 @@ $(document).ready(function(){
 	});
 
 	$("#updateForm").submit(function( event ) {
-		var updateName = $('#updateName').val();
-		var updateValue1 = $('#updateValue1').val();
+		event.preventDefault();
+		var updName = $('#updateName').val();
+		var updValue1 = $('#updateValue1').val();
+		var newEntry = {
+			'updateName': updName,
+			'updateValue1': updValue1
+		};
+		// var updateId = $('#updateId').val();
+		// $("#updateForm").attr("action", "/data/:" + updateId);
+
+		
 		var updateId = $('#updateId').val();
-		$("#updateForm").attr("action", "/data/:" + updateId);
+		//$("#deleteForm").attr("action", "/data/:" + deleteId);
+		$.ajax({   
+			url: '/data/:' + updateId,
+			type: 'PUT',
+			data: newEntry,
+			dataType: 'JSON',
+			success: function(data) { 
+				location.reload();
+			}
+		});
+
 		
 	});
 

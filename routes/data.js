@@ -78,11 +78,10 @@ router.get('/data/byName/:name', function(req, res){
 /*
  * PUT data by id
  * Update Where id
- * Keine Implementierung des HTTP Verb PUT möglich. Problem mit Post und Übergebener id umgangen. Verstoß gegen REST?
- * method-override auch keine Hilfe...
  */
 
-router.post('/data/:id', function(req, res){
+
+router.put('/data/:id', function(req, res){
   //console.log("In /data/update");
   var db = req.db;
   var collection = db.get('datacollection');
@@ -90,7 +89,7 @@ router.post('/data/:id', function(req, res){
   //var id = parseInt(req.body.updateId);
   var newName = req.body.updateName;
   var newVal1 = req.body.updateValue1;
-  //console.log(newName);
+  //console.log(req.body);
   collection.findAndModify({_id: id}, {$set:{
         name:  newName,
         value1: newVal1
@@ -99,7 +98,7 @@ router.post('/data/:id', function(req, res){
       if (err){
         res.send(err);
       }
-      res.redirect("../dataPage");
+      res.send("");
 
   });
 });
