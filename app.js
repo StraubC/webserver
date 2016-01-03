@@ -16,13 +16,10 @@ var methodOverride = require('method-override');
 /*
  * Variablen Datenbank und Routing
  * Verbindnen mit mongolab DB, falls nicht möglich lokalen fallback benutzen
- * ToDo: hardcoded Zugangsdaten maskieren
+ * 
  */
 
 var dbConnectString = 'mongodb://testUser:test@ds053128.mongolab.com:53128/webserver' || 'localhost:27017/webserver';
-// if(process.env.OPENSHIFT_MONGODB_DB_URL){
-//   dbConnectString = process.env.OPENSHIFT_MONGODB_DB_URL + 'webserver';
-// }
 var db = monk(dbConnectString);
 
 var routes = require('./routes/index');
@@ -34,9 +31,6 @@ var data = require('./routes/data');
  * Instanziieren und konfigurieren von Express
  */
 var app = express();
-//var server = http.createServer(app);
-//var io = socketio.listen(server);
-// server.listen(3001);
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -51,11 +45,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(expressSession({secret:'qwerfdsa'}));
-
-
-// app.use(function(req, res, next){
-//   res.end(JSON.stringify(req.cookies));
-// });
 
 app.use(function(req,res,next){
     req.db = db;
@@ -102,30 +91,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-//websocket socket.io
-// var Room = io
-//   .of('/room')
-//   .on('connection', function(socket) {
-//     var joinedRoom = null;
-//     socket.on('join room', function(data) {
-//       socket.join(data);
-//       joinedRoom = data;
-//       socket.emit('joined', "you've joined " + data);
-//       socket.broadcast.to(joinedRoom)
-//                          .send('someone joined room');
-//     }); 
-//     socket.on('fromclient', function(data) {
-//       if (joinedRoom) {
-//         socket.broadcast.to(joinedRoom).send(data);
-//       } else {
-//         socket.send(
-//            "you're not joined a room." +
-//            "select a room and then push join."
-//         );
-//       }
-//     });
-//   });
-
-
-

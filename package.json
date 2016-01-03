@@ -19,5 +19,5 @@
     "ejs": "*",
     "express-session": "~1.2.0"
   },
-  "main": "app.js"
+  "main": "./bin/www"
 }
