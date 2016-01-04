@@ -19,7 +19,7 @@ var methodOverride = require('method-override');
  * 
  */
 
-var dbConnectString = 'mongodb://testUser:test@ds053128.mongolab.com:53128/webserver' || 'localhost:27017/webserver';
+var dbConnectString = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://testUser:test@ds053128.mongolab.com:53128/webserver' || 'localhost:27017/webserver';
 var db = monk(dbConnectString);
 
 var routes = require('./routes/index');
